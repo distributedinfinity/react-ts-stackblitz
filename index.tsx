@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { render } from 'react-dom';
 import Hello from './Hello';
 import './style.css';
 
-interface AppProps { }
+interface AppProps {}
 interface AppState {
   name: string;
 }
 
-class App extends Component<AppProps, AppState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: 'React'
-    };
-  }
+const App: React.FC = () => {
+  const [name, setName] = useState('user');
 
-  render() {
-    return (
-      <div>
-        <Hello name={this.state.name} />
-        <p>
-          Start editing to see some magic happen :)
-        </p>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Hello name={name} />
+      <p>Start editing to see some magic happen :)</p>
+    </div>
+  );
+};
 
 render(<App />, document.getElementById('root'));
